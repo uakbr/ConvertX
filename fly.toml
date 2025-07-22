@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for convertx
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = "convertx" # Change this to your app name
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  ACCOUNT_REGISTRATION = "true"
+  HTTP_ALLOWED = "false"
+  ALLOW_UNAUTHENTICATED = "false"
+  AUTO_DELETE_EVERY_N_HOURS = "1"
+  TZ = "UTC"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[[mounts]]
+  source = "convertx_data"
+  destination = "/app/data"
