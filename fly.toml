@@ -1,7 +1,10 @@
-# fly.toml app configuration file generated for convertx
+# fly.toml app configuration file generated for convertx-spring-sound-7363 on 2025-07-22T01:54:23-05:00
+#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "convertx" # Change this to your app name
+app = 'convertx-spring-sound-7363'
+primary_region = 'dfw'
 
 [build]
   dockerfile = "Dockerfile"
@@ -11,20 +14,22 @@ app = "convertx" # Change this to your app name
   HTTP_ALLOWED = "false"
   ALLOW_UNAUTHENTICATED = "false"
   AUTO_DELETE_EVERY_N_HOURS = "1"
-  TZ = "UTC"
+  TZ = "America/Chicago"
 
 [http_service]
   internal_port = 3000
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
+  processes = ['app']
 
 [[vm]]
-  memory = "512mb"
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
 
 [[mounts]]
   source = "convertx_data"
   destination = "/app/data"
+  initial_size = "1gb"

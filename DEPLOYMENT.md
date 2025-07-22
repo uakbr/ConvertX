@@ -14,7 +14,7 @@ ConvertX is a server-side application that requires system dependencies (FFmpeg,
 1. Sign up at [fly.io](https://fly.io) and install the CLI
 2. Run `fly auth login` locally
 3. Run `fly launch` in your project directory (it will use the existing `fly.toml`)
-4. Get your auth token: `fly auth token`
+4. Create a deploy token: `fly tokens create deploy -a convertx-spring-sound-7363`
 5. Add the token to GitHub Secrets:
    - Go to Settings → Secrets → Actions
    - Add `FLY_API_TOKEN` with your token
